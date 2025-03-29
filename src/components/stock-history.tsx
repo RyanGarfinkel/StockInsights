@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 const StockHistory = () => {
 
     const stock = useSelector((state: RootState) => state.stock);
+
     const [chartData, setChartData] = useState(stock.history);
 
     useEffect(() => {

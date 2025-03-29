@@ -5,6 +5,8 @@ import { AppDispatch } from '@/store/store';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { fetchOverview } from '@/store/overviewSlice';
+import { fetchQuote } from '@/store/quoteSlice';
 
 const StockSearch = () => {
 
@@ -31,6 +33,9 @@ const StockSearch = () => {
         }
 
         dispatch(fetchStock(searchSymbol));
+        dispatch(fetchOverview(searchSymbol));
+        dispatch(fetchQuote(searchSymbol));
+
         setSearchError('');
         setSearchSymbol('');
     }
