@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const Home: React.FC = () => {
 
@@ -12,9 +12,9 @@ const Home: React.FC = () => {
     const { user, isLoading } = useUser();
 
     useEffect(() => {
-      
+
       if (!isLoading && user)
-        router.push("/dashboard");
+        router.push('/dashboard');
 
     }, [isLoading, router, user]);
     

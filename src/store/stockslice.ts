@@ -4,6 +4,8 @@ interface StockState {
     symbol: string;
     name: string;
     price: number;
+    history: { date: string, price: number }[];
+
     loading: boolean;
     error: string | null;
 };
@@ -12,6 +14,7 @@ const initialState: StockState = {
     symbol: "",
     name: "",
     price: 0,
+    history: [],
     loading: false,
     error: null,
 };
@@ -46,6 +49,7 @@ const stockSlice = createSlice({
             state.symbol = action.payload.symbol;
             state.name = action.payload.name;
             state.price = action.payload.price;
+            state.history = action.payload.history;
         })
         .addCase(fetchStock.rejected, (state, action) => {
             state.loading = false;
