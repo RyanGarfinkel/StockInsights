@@ -3,9 +3,10 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+import StockSearch from '@/components/stocksearch';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 
 const Dashboard = () => {
@@ -20,33 +21,22 @@ const Dashboard = () => {
 
     }, [isLoading, router, user]);
 
-    
-    
+    const stock = useSelector((state: RootState) => state.stock);
+
     return (
-        <div className="p-4">
-            <Card className="max-w-md mx-auto">
+        <div>
+            <StockSearch />
+            <Card>
                 <CardHeader>
-                    <CardTitle>Stock Name</CardTitle>
-                    <CardDescription>
-                        Enter the stock symbol to get insights.
-                    </CardDescription>
+                    <CardTitle>Stock State</CardTitle>
+                    <CardDescription>Current stock information</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form
-                        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                            e.preventDefault();
-                            const stockSymbol = (e.target as HTMLFormElement).stock.value;
-                            console.log('Stock Symbol:', stockSymbol);
-                            // Add your logic to handle the stock symbol here
-                        }}
-                    >
-                        <div className="space-y-4">
-                            <Input name="stock" placeholder="Enter stock symbol" />
-                            <Button type="submit" className="w-full">
-                                Submit
-                            </Button>
-                        </div>
-                    </form>
+                    <div>
+                        <p>Stock Symbol: {stock.symbol}</p>
+                        <p>Stock Name: {stock.name}</p>
+                        <p>Price: ${stock.price}</p>
+                    </div>
                 </CardContent>
             </Card>
         </div>

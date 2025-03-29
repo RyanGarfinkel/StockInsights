@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import React from "react";
+import { Provider } from "react-redux";
+import store from '@/store/store';
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Stock Insights",
-  description: "Get insights on stocks.",
-};
 
 const RootLayout =({ children }: { children: React.ReactNode }) => {
 
@@ -14,7 +12,9 @@ const RootLayout =({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body>
         <UserProvider>
-          {children}
+          <Provider store={store}>
+            {children}
+          </Provider>
         </UserProvider>
       </body>
     </html>
