@@ -25,7 +25,7 @@ const Dashboard = () => {
     return (
         <div className='flex flex-col m-8'>
             <Navbar />
-            <div className='flex flex-row'>
+            <div className='flex flex-row space-x-8'>
                 <StockSearch />
                 <StockInfo />
             </div>

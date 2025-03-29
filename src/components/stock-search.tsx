@@ -10,10 +10,17 @@ const StockSearch = () => {
 
     const dispatch: AppDispatch = useDispatch();
 
-
     const [searchSymbol, setSearchSymbol] = useState('');
     const [searchError, setSearchError] = useState('');
 
+
+    const handleChnage = (val: string) => {
+
+        setSearchSymbol(val);
+        
+        if(!val)
+            setSearchError('Please enter a stock symbol.');
+    }
 
     const handleSearch = () => {
 
@@ -24,11 +31,12 @@ const StockSearch = () => {
         }
 
         dispatch(fetchStock(searchSymbol));
+        setSearchError('');
         setSearchSymbol('');
     }
 
     return (
-        <Card>
+        <Card className='w-80'>
             <CardHeader>
                 <CardTitle>Search Symbol</CardTitle>
                 <CardDescription>
@@ -42,9 +50,10 @@ const StockSearch = () => {
                             type='text'
                             placeholder='Ex. MSFT'
                             value={searchSymbol}
-                            onChange={(e) => setSearchSymbol(e.target.value)}
+                            onChange={(e) => handleChnage(e.target.value)}
+                            className='pr-10'
                         />
-                        <Button onClick={handleSearch}>Search</Button>
+                        <Button onClick={handleSearch}>Find</Button>
                     </div>
                     <p className={`text-sm ${searchError ? 'text-red-500' : 'invisible'}`}>
                         {searchError ? searchError : <span className="invisible">Placeholder</span>}

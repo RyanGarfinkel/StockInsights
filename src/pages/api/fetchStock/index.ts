@@ -17,7 +17,16 @@ const mockStockData = {
         { date: '2023-01-10', price: 155.25 },
         { date: '2023-01-11', price: 156.00 },
         { date: '2023-01-12', price: 157.50 },
-    ]
+    ],
+    dayChangeDollar: -3.33,
+    dayChangePercent: -0.076,
+    volume: 1000000,
+    marketCap: 2500000000,
+    week52Low: 120.00,
+    week52High: 175.00,
+    dividendYield: 0.006,
+    sector: 'Technology',
+    
 };
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
