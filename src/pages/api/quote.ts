@@ -25,8 +25,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (response.status !== 200)
             return res.status(response.status).json({ error: 'Failed to fetch data from Alpha Vantage' });
 
+        console.log('response data:', response.data);
         const quoteData = response.data['Global Quote'];
 
+        console.log('Fetched quote data:', !quoteData || Object.keys(quoteData).length === 0);
         if (!quoteData || Object.keys(quoteData).length === 0)
             return res.status(404).json({ error: 'Ticker symbol not found.' });
 

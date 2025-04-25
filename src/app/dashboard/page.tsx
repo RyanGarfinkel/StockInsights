@@ -7,6 +7,7 @@ import StockSearch from '@/components/stock-search';
 import StockHistory from '@/components/stock-history';
 import StockInfo from '@/components/stock-info';
 import Navbar from '@/components/navbar';
+import News from '@/components/news';
 
 
 const Dashboard = () => {
@@ -29,7 +30,10 @@ const Dashboard = () => {
                 <StockSearch />
                 <StockInfo />
             </div>
-            <StockHistory />
+            <div className='flex flex-row space-x-8 w-full'>
+                <StockHistory />
+                <News/>
+            </div>
         </div>
     )
 };

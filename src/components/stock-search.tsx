@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { fetchOverview } from '@/store/overviewSlice';
 import { fetchQuote } from '@/store/quoteSlice';
+import { fetchNews } from '@/store/news';
 
 const StockSearch = () => {
 
@@ -33,8 +34,10 @@ const StockSearch = () => {
         }
 
         dispatch(fetchStock(searchSymbol));
+        
         dispatch(fetchOverview(searchSymbol));
         dispatch(fetchQuote(searchSymbol));
+        dispatch(fetchNews(searchSymbol));
 
         setSearchError('');
         setSearchSymbol('');
